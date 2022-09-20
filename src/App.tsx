@@ -29,13 +29,23 @@ function App() {
 
 
   return (
-  <div className="max-w-[1344px] mx-auto flex flex-col items-center my-20">
-    <img src={logoImg} alt="" />
-    <h1 className="text-6xl text-white font-black">
+  <div className="max-w-[1344px] mx-auto flex flex-col items-center mt-5
+  2xl:my-10">
+    <img src={logoImg} alt="" 
+    className="w-[250px] mb-2"
+    />
+    <h1 className="text-4xl text-white font-black
+    sm:text-5xl
+    md:text-6xl"
+    >
        Seu <span className="bg-nlw-gradient bg-clip-text text-transparent">duo</span> está aqui.
     </h1>
 
-    <div className="grid grid-cols-6 gap-6 mt-16">
+    <div className="grid grid-cols-1 gap-6 mt-10 mx-10
+      sm:grid-cols-2
+      md:grid-cols-3 
+      xl:grid-cols-6"
+      >
       {games.map(game => {
         return (
           <GameBanner 
