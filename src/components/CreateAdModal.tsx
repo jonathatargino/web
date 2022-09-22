@@ -3,11 +3,25 @@ import * as Checkbox from '@radix-ui/react-checkbox'
 import * as ToggleGroup from '@radix-ui/react-toggle-group';
 
 import axios from 'axios'
+import { UserFormData } from '../types/user'
 
 import { CreateAdBanner } from "./CreateAdBanner";
 import { Check, GameController } from 'phosphor-react'
-import { Input } from './input';
 import { useEffect, useState, FormEvent } from 'react';
+
+import { useForm } from 'react-hook-form'
+import * as yup from 'yup'
+import { yupResolver } from '@hookform/resolvers/yup'
+import { InputError } from './InputError';
+
+const validationSchema = yup.object({
+  game: yup.string().required(),
+  name: yup.string().required(),
+  yearsPlaying: yup.number().required().min(0),
+  discord: yup.string().required().matches(/^.{3,32}#[0-9]{4}$/),
+  hourStart: yup.string().required(),
+  hourEnd: yup.string().required(),
+})
 
 export function CreateAdModal(){
 
@@ -26,13 +40,11 @@ export function CreateAdModal(){
     .then(response => setGames(response.data))
   }, [])
 
-  async function handleCreateAd(event: FormEvent){
-    event.preventDefault();
+  async function handleCreateAd(data: UserFormData){
+    console.log(data)
 
-    const formData = new FormData(event.target as HTMLFormElement)
-    const data = Object.fromEntries(formData)
-
-    if(!data.name){
+    if(weekDays.length < 1){
+      alert("Selecione no mínimo um dia da semana!")
       return
     }
 
@@ -49,7 +61,7 @@ export function CreateAdModal(){
 
     alert("Anuncio criado com sucesso!")
     } catch (err){
-      console.log
+      console.log(err)
       alert("Erro ao criar o anuncio")
     }
     
@@ -58,6 +70,15 @@ export function CreateAdModal(){
     console.log(useVoiceChannel)
   }
 
+  function onError(error: any){
+    console.log('erro: ', error)
+  }
+
+
+  const { register, handleSubmit, formState: {errors} } = useForm({
+    resolver: yupResolver(validationSchema)
+  })
+
     return (
         <Dialog.Root>
         <CreateAdBanner />
@@ -65,19 +86,24 @@ export function CreateAdModal(){
         <Dialog.Portal>
           <Dialog.Overlay className="bg-black/60 inset-0 fixed" />
   
-          <Dialog.Content className="fixed bg-[#2A2634] py-8 px-10 text-white top-1/2 left-1/2  -translate-x-1/2 -translate-y-1/2 rounded-lg w-[480px] shadow-lg shadow-black/25">
+          <Dialog.Content 
+          className="fixed bg-[#2A2634] py-8 px-10 xl:py-6 text-white   
+          top-1/2 left-1/2  -translate-x-1/2 -translate-y-1/2 
+          rounded-lg w-[480px] shadow-lg shadow-black/25
+          overflow-y-auto max-h-[640px]
+          scrollbar-thin scrollbar-track-transparent scrollbar-thumb-zinc-900 scrollbar-thumb-rounded">
             <Dialog.Title className="text-3xl font-black">Publique um anúncio</Dialog.Title>
-              <form onSubmit={handleCreateAd} className="mt-8 flex flex-col gap-4">
+              <form onSubmit={handleSubmit(handleCreateAd, onError)} className="mt-8 flex flex-col gap-4">
                 
                 <div className="flex flex-col gap-2">
                   <label htmlFor="game" className="font-semibold">Qual o game?</label>
                   <select
                   className="bg-zinc-900 py-3 px-4 rounded text-sm placeholder:text-zinc-500 appearance-none"
-                  name="game"
+                  {...register('game')}
                   id="game"
                   defaultValue="" 
                   >
-                    <option disabled>Selecione o game que deseja jogar</option>
+                    <option>Selecione o game que deseja jogar</option>
                     {games.map(game => {
                       return (
                         <option key={game.id} value={game.id}>{game.title}</option>
@@ -88,17 +114,38 @@ export function CreateAdModal(){
   
                 <div className="flex flex-col gap-2">
                   <label htmlFor="name">Seu nome (ou nickname)</label>
-                  <Input name="name" id="name" placeholder="Como te chamam dentro do game?"/>
+                  <input 
+                    className="bg-zinc-900 py-3 px-4 rounded text-sm placeholder:text-zinc-500 appearance-none"
+                    id="name" 
+                    placeholder="Como te chamam dentro do game?"
+                    autoComplete="off"
+                    {...register('name')}
+                    />
+                    {errors.name?.type && <InputError type={errors.name.type} field="name"/>}
                 </div>
   
                 <div className="grid grid-cols-2 gap-6">
                   <div className="flex flex-col gap-2">
                     <label htmlFor="yearsPlaying">Joga há quantos anos?</label>
-                    <Input name="yearsPlaying" id="yearsPlaying" placeholder="Tudo bem ser ZERO"/>
+                    <input
+                      className="bg-zinc-900 py-3 px-4 rounded text-sm placeholder:text-zinc-500 appearance-none"  
+                      id="yearsPlaying" 
+                      placeholder="Tudo bem ser ZERO"
+                      autoComplete="off"
+                      {...register('yearsPlaying')}
+                      />
+                      {errors.yearsPlaying?.type && <InputError type={errors.yearsPlaying.type} field="yearsPlaying" />}
                   </div>
                   <div className="flex flex-col gap-2">
                     <label htmlFor="discord">Qual seu Discord?</label>
-                    <Input name="discord" id="discord" placeholder="Usuário#0000"/>
+                    <input
+                      className="bg-zinc-900 py-3 px-4 rounded text-sm placeholder:text-zinc-500 appearance-none"
+                      id="discord" 
+                      placeholder="Usuário#0000"
+                      autoComplete="off"
+                      {...register('discord')}
+                      />
+                      {errors.discord?.type && <InputError type={errors.discord.type} field="discord" />}
                   </div>
                 </div>
   
@@ -166,10 +213,31 @@ export function CreateAdModal(){
                   <div className="flex flex-col gap-2 flex-1">
                     <label htmlFor="hourStart">Qual horário do dia?</label>
                     <div className="grid grid-cols-2 gap-1">
-                      <Input name="hourStart" id="hourStart" type="time" placeholder="De" className="appearance-none"/>
-                      <Input name='hourEnd' id="hourEnd" type="time" placeholder="Até" className="appearance-none"/>
+                      <input
+                        className="bg-zinc-900 py-3 px-4 rounded text-sm placeholder:text-zinc-500 appearance-none"
+                        id="hourStart" 
+                        type="time" 
+                        placeholder="De"
+                        autoComplete="off"
+                        {...register('hourStart')}
+                      />
+                      <input
+                        className="bg-zinc-900 py-3 px-4 rounded text-sm placeholder:text-zinc-500 appearance-none"
+                        id="hourEnd" 
+                        type="time" 
+                        placeholder="Até"
+                        autoComplete="off"
+                        {...register('hourEnd')}
+                        />
                     </div>
                   </div>
+                </div>
+                <div
+                className="m-auto">
+                  <div>
+                    {errors.hourStart?.type && <InputError type={errors.hourStart.type} field="hourStart" />}
+                  </div>
+                  {errors.hourEnd?.type && <InputError type={errors.hourEnd.type} field="hourEnd"/>}
                 </div>
   
                 <label className="mt-2 flex gap-2 text-sm items-center">

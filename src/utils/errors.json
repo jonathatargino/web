@@ -1,0 +1,19 @@
+{
+    "name": {
+        "required": "Nome é um campo obrigatório"
+    },
+    "yearsPlaying": {
+        "typeError": "Tempo de jogo inválido",
+        "min": "Tempo de jogo deve ser 0 ou mais"
+    },
+    "discord": {
+        "required": "Discord é um campo obrigatório",
+        "matches": "Discord inválido"
+    },
+    "hourStart": {
+        "required": "Hora inicial é um campo obrigatório"
+    },
+    "hourEnd": {
+        "required": "Hora final é um campo obrigatório"
+    }
+}
