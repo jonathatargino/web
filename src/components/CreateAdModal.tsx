@@ -98,18 +98,22 @@ export function CreateAdModal(){
                 <div className="flex flex-col gap-2">
                   <label htmlFor="game" className="font-semibold">Qual o game?</label>
                   <select
-                  className="bg-zinc-900 py-3 px-4 rounded text-sm placeholder:text-zinc-500 appearance-none"
+                  className="bg-zinc-900 py-3 px-4 rounded text-sm appearance-none"
                   {...register('game')}
                   id="game"
-                  defaultValue="" 
+                  defaultValue=""
                   >
-                    <option>Selecione o game que deseja jogar</option>
+                    <option value="" 
+                    disabled 
+                    selected
+                    >Selecione o game que deseja jogar</option>
                     {games.map(game => {
                       return (
                         <option key={game.id} value={game.id}>{game.title}</option>
                       )
                     })}
                   </select>
+                  {errors.game?.type && <InputError type={errors.game.type} field="game"/>}
                 </div>
   
                 <div className="flex flex-col gap-2">

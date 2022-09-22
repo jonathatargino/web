@@ -2,6 +2,9 @@
     "name": {
         "required": "Nome é um campo obrigatório"
     },
+    "game": {
+        "required": "Selecione um jogo"
+    },
     "yearsPlaying": {
         "typeError": "Tempo de jogo inválido",
         "min": "Tempo de jogo deve ser 0 ou mais"
