@@ -2,6 +2,7 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 import { CreateAdModal } from "../components/CreateAdModal"
 import { GameBanner } from "../components/GameBanner"
+import Grid from "../components/Grid"
 import PageStructure from "../components/PageStructure"
 
 interface Game {
@@ -31,11 +32,7 @@ export function Home(){
                 Seu <span className="bg-nlw-gradient bg-clip-text text-transparent">duo</span> está aqui.
             </h1>
 
-            <div className="grid grid-cols-1 gap-6 mt-10 mx-10
-            sm:grid-cols-2
-            md:grid-cols-3 
-            xl:grid-cols-6"
-            >
+            <Grid>
                 {games.map(game => {
                     return (
                     <GameBanner 
@@ -46,7 +43,7 @@ export function Home(){
                     />
                     )
                 })}
-            </div>
+            </Grid>
     <CreateAdModal />
   </PageStructure>
     )
