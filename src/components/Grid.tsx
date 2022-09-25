@@ -1,10 +1,10 @@
 import { Component, ReactNode } from "react";
 
-interface PageScructureProps {
+interface PageStructureProps {
     children: ReactNode
 }
 
-class Grid extends Component<PageScructureProps> {
+class Grid extends Component<PageStructureProps> {
     render(){
         return (
             <div className="grid grid-cols-1 gap-6 mt-10 mx-10
