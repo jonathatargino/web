@@ -5,7 +5,8 @@ import { GameBanner } from "../components/GameBanner"
 import Grid from "../components/Grid"
 import PageStructure from "../components/PageStructure"
 
-interface Game {
+
+export interface GameProps {
     id: string,
     title: string,
     bannerUrl: string,
@@ -37,6 +38,7 @@ export function Home(){
                     return (
                     <GameBanner 
                     key={game.id}
+                    id={game.id}
                     bannerUrl={game.bannerUrl} 
                     title={game.title} 
                     adsCount={game._count.ads}
