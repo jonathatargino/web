@@ -17,7 +17,7 @@ export interface GameProps {
 
 export function Home(){
 
-    const [games, setGames] = useState<Game[]>([])
+    const [games, setGames] = useState<GameProps[]>([])
   
     useEffect(() => {
         axios('http://localhost:3333/games')
