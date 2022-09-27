@@ -10,7 +10,6 @@ class PageStructure extends Component<PageScructureProps> {
         return (
             <div className="max-w-[1344px] mx-auto flex flex-col items-center mt-5
              2xl:my-10">
-                <Logo/>
                 {this.props.children}
             </div>
         )

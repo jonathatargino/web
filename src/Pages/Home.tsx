@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 import { CreateAdModal } from "../components/CreateAdModal"
 import { GameBanner } from "../components/GameBanner"
 import Grid from "../components/Grid"
+import { Logo } from "../components/Logo"
 import PageStructure from "../components/PageStructure"
 
 
@@ -26,6 +27,7 @@ export function Home(){
 
     return (
         <PageStructure>
+            <Logo/>
             <h1 className="text-4xl text-white font-black
             sm:text-5xl
             md:text-6xl"

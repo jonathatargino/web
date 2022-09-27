@@ -6,6 +6,9 @@ import { DuoCard, DuoCardProps } from '../components/DuoCard';
 import PageStructure from '../components/PageStructure';
 import Grid from '../components/Grid';
 import { GameProps } from './Home';
+import {ArrowCircleLeft} from 'phosphor-react'
+import { Logo } from '../components/Logo';
+import { Link } from 'react-router-dom'
 
 
 export function Game(){
@@ -31,6 +34,10 @@ export function Game(){
 
     return (
         <PageStructure>
+            <Link to="/">
+                <ArrowCircleLeft size={70} className="text-white hover:text-purple-400 absolute left-10 top-10"/>
+            </Link>
+            <Logo/>
             <h1 className="text-4xl text-white font-black
             sm:text-5xl"
             >{games.filter(game => game.id === id).map(game => game.title)}</h1>
