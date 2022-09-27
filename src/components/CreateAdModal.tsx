@@ -42,6 +42,8 @@ export function CreateAdModal(){
 
   async function handleCreateAd(data: UserFormData){
 
+    reset()
+
     if(weekDays.length < 1){
       alert("Selecione no mínimo um dia da semana!")
       return
@@ -71,7 +73,7 @@ export function CreateAdModal(){
   }
 
 
-  const { register, handleSubmit, formState: {errors} } = useForm({
+  const { register, handleSubmit, reset, formState: {errors} } = useForm({
     resolver: yupResolver(validationSchema)
   })
 
@@ -263,6 +265,7 @@ export function CreateAdModal(){
                   <Dialog.Close 
                   type="button"
                   className="bg-zinc-500 hover:bg-zinc-600 px-5 h-12 rounded-md font-semibold"
+                  onClick={() => reset()}
                   >
                     Cancelar
                   </Dialog.Close >
