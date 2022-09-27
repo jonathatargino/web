@@ -41,7 +41,6 @@ export function CreateAdModal(){
   }, [])
 
   async function handleCreateAd(data: UserFormData){
-    console.log(data)
 
     if(weekDays.length < 1){
       alert("Selecione no mínimo um dia da semana!")
@@ -65,9 +64,6 @@ export function CreateAdModal(){
       alert("Erro ao criar o anuncio")
     }
     
-    console.log(data)
-    console.log(weekDays)
-    console.log(useVoiceChannel)
   }
 
   function onError(error: any){

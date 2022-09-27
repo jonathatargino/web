@@ -28,10 +28,6 @@ export function Game(){
         .then(response => setGames(response.data))
     }, [])
 
-    console.log(games)
-
-    console.log(id)
-
     return (
         <PageStructure>
             <Link to="/">

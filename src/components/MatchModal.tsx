@@ -2,8 +2,26 @@ import * as Dialog from '@radix-ui/react-dialog'
 import { MatchButton } from "./MatchButton";
 import { CheckCircle, X } from 'phosphor-react';
 
-export function MatchModal(){
+import axios from "axios"
+import { useEffect, useState } from "react"
+
+interface MatchModalProps {
+    matchUserId: string;
+}
+
+interface DiscordProps {
+    discord: string;
+}
+
+export function MatchModal({matchUserId}: MatchModalProps){
     
+    const [discord, setDiscord] = useState<DiscordProps>()
+
+    useEffect(() => {
+        axios(`http://localhost:3333/ads/${matchUserId}/discord`)
+        .then(response => setDiscord(response.data))
+    }, [])
+
     return (
         <Dialog.Root>
             <MatchButton/>
@@ -24,7 +42,7 @@ export function MatchModal(){
                         <h2 className="text-zinc-400">Agora é só começar a jogar!</h2>
                         </Dialog.Title>
                         <h2 className="font-bold">Adicione seu discord</h2>
-                        <h2 className="py-2 px-20 bg-[#121214] my-4 rounded">discord#0000</h2>
+                        <h2 className="py-2 px-20 bg-[#121214] my-4 rounded">{discord? discord.discord: 'invalido#0000'}</h2>
                 </Dialog.Content>
             </Dialog.Portal>
         </Dialog.Root>
