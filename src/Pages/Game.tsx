@@ -17,18 +17,19 @@ export function Game(){
     const [duo, setDuos] = useState<DuoCardProps[]>([])
 
     useEffect(() => {
-        axios(`http://localhost:3333/games/${id}/ads`)
+        axios(`${import.meta.env.VITE_URL_BASE}/games/${id}/ads`)
         .then(response => setDuos(response.data))
     }, [])
 
     const [games, setGames] = useState<GameProps[]>([])
   
     useEffect(() => {
-        axios('http://localhost:3333/games')
+        axios(`${import.meta.env.VITE_URL_BASE}/games`)
         .then(response => setGames(response.data))
     }, [])
 
     return (
+
         <PageStructure>
             <Link to="/">
                 <ArrowCircleLeft size={70} className="text-white hover:text-purple-400 absolute left-10 top-10"/>

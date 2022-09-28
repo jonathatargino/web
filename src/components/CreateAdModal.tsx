@@ -36,7 +36,7 @@ export function CreateAdModal(){
 
 
   useEffect(() => {
-    axios('http://localhost:3333/games')
+    axios(`${import.meta.env.VITE_URL_BASE}/games`)
     .then(response => setGames(response.data))
   }, [])
 
@@ -50,7 +50,7 @@ export function CreateAdModal(){
     }
 
     try {
-      await axios.post(`http://localhost:3333/games/${data.game}/ads`, {
+      await axios.post(`${import.meta.env.VITE_URL_BASE}/games/${data.game}/ads`, {
       name: data.name,
       yearsPlaying: Number(data.yearsPlaying),
       discord: data.discord,

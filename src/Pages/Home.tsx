@@ -21,7 +21,7 @@ export function Home(){
     const [games, setGames] = useState<GameProps[]>([])
   
     useEffect(() => {
-        axios('http://localhost:3333/games')
+        axios(`${import.meta.env.VITE_URL_BASE}/games`)
         .then(response => setGames(response.data))
     }, [])
 

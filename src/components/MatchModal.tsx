@@ -18,7 +18,7 @@ export function MatchModal({matchUserId}: MatchModalProps){
     const [discord, setDiscord] = useState<DiscordProps>()
 
     useEffect(() => {
-        axios(`http://localhost:3333/ads/${matchUserId}/discord`)
+        axios(`${import.meta.env.VITE_URL_BASE}/ads/${matchUserId}/discord`)
         .then(response => setDiscord(response.data))
     }, [])
 
