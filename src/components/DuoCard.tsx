@@ -36,7 +36,6 @@ export function DuoCard({data}: Props){
             <DuoInfo
             label="Chamada de áudio?"
             value={data.useVoiceChannel? 'Sim' : 'Não'}
-            colorValue={data.useVoiceChannel? '#34D399' : '#F87171'}
             />
             <MatchModal matchUserId={data.id}/>
         </div>
