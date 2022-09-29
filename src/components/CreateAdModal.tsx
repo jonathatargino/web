@@ -121,6 +121,7 @@ export function CreateAdModal(){
                     id="name" 
                     placeholder="Como te chamam dentro do game?"
                     autoComplete="off"
+                    spellCheck="false"
                     {...register('name')}
                     />
                     {errors.name?.type && <InputError type={errors.name.type} field="name"/>}
@@ -145,6 +146,7 @@ export function CreateAdModal(){
                       id="discord" 
                       placeholder="Usuário#0000"
                       autoComplete="off"
+                      spellCheck="false"
                       {...register('discord')}
                       />
                       {errors.discord?.type && <InputError type={errors.discord.type} field="discord" />}
@@ -216,7 +218,7 @@ export function CreateAdModal(){
                     <label htmlFor="hourStart">Qual horário do dia?</label>
                     <div className="grid grid-cols-2 gap-1">
                       <input
-                        className="bg-zinc-900 py-3 px-4 rounded text-sm placeholder:text-zinc-500 appearance-none"
+                        className="bg-zinc-900 py-3 px-4 rounded text-sm placeholder:text-zinc-500 removeClock"
                         id="hourStart" 
                         type="time" 
                         placeholder="De"
@@ -224,7 +226,7 @@ export function CreateAdModal(){
                         {...register('hourStart')}
                       />
                       <input
-                        className="bg-zinc-900 py-3 px-4 rounded text-sm placeholder:text-zinc-500 appearance-none"
+                        className="bg-zinc-900 py-3 px-4 rounded text-sm placeholder:text-zinc-500 removeClock"
                         id="hourEnd" 
                         type="time" 
                         placeholder="Até"
