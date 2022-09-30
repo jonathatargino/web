@@ -8,6 +8,12 @@ O NLW Duos é um projeto desenvolvido para procurar e achar pessoas disponíveis
 - Node.js
 - NPM ou Yarn
 
+### Variáveis de Ambiente
+Além das ferramentas anteriores é necessária criar uma váriavel de ambiente .env.local na raiz do projeto e adicionar as seguintes variáveis
+
+VITE_URL_BASE = 'porta do localhost na qual seu <a href="https://github.com/jonathatargino/server">backend<a> está rodando'
+
+
 ### Instalação
 ```
 # Abra o terminal e copie este repositório com o comando
