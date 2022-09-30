@@ -17,7 +17,7 @@ O NLW Duos é um projeto desenvolvido para procurar e achar pessoas disponíveis
 ### Variáveis de Ambiente
 Além das ferramentas anteriores é necessária criar uma váriavel de ambiente .env.local na raiz do projeto e adicionar as seguintes variáveis
 
-VITE_URL_BASE = 'porta do localhost na qual seu <a href="https://github.com/jonathatargino/server">backend<a> está rodando'
+VITE_URL_BASE = 'porta do localhost na qual seu <a href="https://github.com/jonathatargino/server">backend</a> está rodando'
 
 
 ### Instalação
