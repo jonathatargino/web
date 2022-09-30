@@ -26,7 +26,7 @@ VITE_URL_BASE = 'porta do localhost na qual seu <a href="https://github.com/jona
 $ git clone https://github.com/jonathatargino/web.git
 
 # Acesse a pasta do projeto no prompt de comando 
-$ cd moveit
+$ cd web
 
 # Instale as dependências
 yarn install
