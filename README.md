@@ -6,6 +6,15 @@
 
 O NLW Duos é um projeto desenvolvido para procurar e achar pessoas disponíveis para jogar jogos online, de acordo com os jogos que você joga, o horário e os dias.
 
+Após o término da Next Level Week, (evento onde foi desenvolvido esse projeto) que durou 7 dias, implementei algumas melhorias no projeto.
+
+### Implementações pós-NLW
+
+- Validação de formulários com React Hook Forms e Yup
+- Responsividade
+- Rotas de navegação com React Router Dom
+- Página de anúncios por jogos na web (só existia no mobile)
+
 ![match modal](https://github.com/jonathatargino/web/blob/main/assets/match_modal.png)
 
 ## Como executar o projeto
