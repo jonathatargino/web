@@ -1,6 +1,12 @@
+# NLW Duos
+
+![homepage](https://github.com/jonathatargino/web/blob/main/assets/homepage.png)
+
 ## 🧐 Sobre o projeto
 
 O NLW Duos é um projeto desenvolvido para procurar e achar pessoas disponíveis para jogar jogos online, de acordo com os jogos que você joga, o horário e os dias.
+
+![match modal](https://github.com/jonathatargino/web/blob/main/assets/match_modal.png)
 
 ## Como executar o projeto
 ### Pré-requisitos
