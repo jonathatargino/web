@@ -87,7 +87,7 @@ export function CreateAdModal(){
           <Dialog.Content 
           className="fixed bg-[#2A2634] py-4 px-6 mob:py-8 mob:px-10 xl:py-6 text-white   
           top-1/2 left-1/2  -translate-x-1/2 -translate-y-1/2 
-          rounded-lg w-[300px] mob:w-[480px] shadow-lg shadow-black/25
+          rounded-lg w-[300px] mobm:w-[360px] mob:w-[480px] shadow-lg shadow-black/25
           overflow-y-auto max-h-[550px] xl:max-h-[640px]
           scrollbar-thin scrollbar-track-transparent scrollbar-thumb-zinc-900 scrollbar-thumb-rounded">
             <Dialog.Title className="text-3xl font-black">Publique um anúncio</Dialog.Title>
@@ -216,9 +216,9 @@ export function CreateAdModal(){
   
                   <div className="flex flex-col gap-2 flex-1">
                     <label htmlFor="hourStart">Qual horário do dia?</label>
-                    <div className="grid grid-cols-2 gap-1">
+                    <div className="mob:grid mob:grid-cols-2 mob:gap-1 flex flex-col gap-2">
                       <input
-                        className="bg-zinc-900 py-3 px-4 rounded mob:text-sm placeholder:text-zinc-500 removeClock"
+                        className="text-center block bg-zinc-900 py-3 px-4 rounded mob:text-sm placeholder:text-zinc-500 removeClock"
                         id="hourStart" 
                         type="time" 
                         placeholder="De"
@@ -226,7 +226,7 @@ export function CreateAdModal(){
                         {...register('hourStart')}
                       />
                       <input
-                        className="bg-zinc-900 py-3 px-4 rounded mob:text-sm placeholder:text-zinc-500 removeClock"
+                        className="text-center bg-zinc-900 py-3 px-4 rounded mob:text-sm placeholder:text-zinc-500 removeClock"
                         id="hourEnd" 
                         type="time" 
                         placeholder="Até"
