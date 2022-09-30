@@ -28,9 +28,11 @@ export function Home(){
     return (
         <PageStructure>
             <Logo/>
-            <h1 className="text-4xl text-white font-black
+            <h1 className="text-3xl text-white font-black
+            mob:text-4xl
             sm:text-5xl
-            md:text-6xl"
+            md:text-6xl
+            md:mt-8"
             >
                 Seu <span className="bg-nlw-gradient bg-clip-text text-transparent">duo</span> está aqui.
             </h1>

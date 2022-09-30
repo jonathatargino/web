@@ -85,10 +85,10 @@ export function CreateAdModal(){
           <Dialog.Overlay className="bg-black/60 inset-0 fixed" />
   
           <Dialog.Content 
-          className="fixed bg-[#2A2634] py-8 px-10 xl:py-6 text-white   
+          className="fixed bg-[#2A2634] py-4 px-6 mob:py-8 mob:px-10 xl:py-6 text-white   
           top-1/2 left-1/2  -translate-x-1/2 -translate-y-1/2 
-          rounded-lg w-[480px] shadow-lg shadow-black/25
-          overflow-y-auto max-h-[640px]
+          rounded-lg w-[300px] mob:w-[480px] shadow-lg shadow-black/25
+          overflow-y-auto max-h-[550px] xl:max-h-[640px]
           scrollbar-thin scrollbar-track-transparent scrollbar-thumb-zinc-900 scrollbar-thumb-rounded">
             <Dialog.Title className="text-3xl font-black">Publique um anúncio</Dialog.Title>
               <form onSubmit={handleSubmit(handleCreateAd, onError)} className="mt-8 flex flex-col gap-4">
@@ -96,7 +96,7 @@ export function CreateAdModal(){
                 <div className="flex flex-col gap-2">
                   <label htmlFor="game" className="font-semibold">Qual o game?</label>
                   <select
-                  className="bg-zinc-900 py-3 px-4 rounded text-sm appearance-none"
+                  className="bg-zinc-900 py-3 px-4 rounded mob:text-sm text-[12px] appearance-none"
                   {...register('game')}
                   id="game"
                   defaultValue=""
@@ -117,7 +117,7 @@ export function CreateAdModal(){
                 <div className="flex flex-col gap-2">
                   <label htmlFor="name">Seu nome (ou nickname)</label>
                   <input 
-                    className="bg-zinc-900 py-3 px-4 rounded text-sm placeholder:text-zinc-500 appearance-none"
+                    className="bg-zinc-900 py-3 px-4 rounded mob:text-sm placeholder:text-zinc-500 text-[12px] appearance-none"
                     id="name" 
                     placeholder="Como te chamam dentro do game?"
                     autoComplete="off"
@@ -127,11 +127,11 @@ export function CreateAdModal(){
                     {errors.name?.type && <InputError type={errors.name.type} field="name"/>}
                 </div>
   
-                <div className="grid grid-cols-2 gap-6">
-                  <div className="flex flex-col gap-2">
+                <div className="mob:grid mob:grid-cols-2 mob:gap-6">
+                  <div className="flex flex-col gap-2 mb-4">
                     <label htmlFor="yearsPlaying">Joga há quantos anos?</label>
                     <input
-                      className="bg-zinc-900 py-3 px-4 rounded text-sm placeholder:text-zinc-500 appearance-none"  
+                      className="bg-zinc-900 py-3 px-4 rounded mob:text-sm placeholder:text-zinc-500 text-[12px] appearance-none"  
                       id="yearsPlaying" 
                       placeholder="Tudo bem ser ZERO"
                       autoComplete="off"
@@ -142,7 +142,7 @@ export function CreateAdModal(){
                   <div className="flex flex-col gap-2">
                     <label htmlFor="discord">Qual seu Discord?</label>
                     <input
-                      className="bg-zinc-900 py-3 px-4 rounded text-sm placeholder:text-zinc-500 appearance-none"
+                      className="bg-zinc-900 py-3 px-4 rounded mob:text-sm placeholder:text-zinc-500 text-[12px] appearance-none"
                       id="discord" 
                       placeholder="Usuário#0000"
                       autoComplete="off"
@@ -153,8 +153,8 @@ export function CreateAdModal(){
                   </div>
                 </div>
   
-                <div className="flex gap-6">
-                  <div className="flex flex-col gap-2">
+                <div className="mob:flex mob:gap-6">
+                  <div className="flex flex-col gap-2 mb-4 mob:mb-0">
                     <label htmlFor="weekDays">Quando costuma jogar?</label>
                     <ToggleGroup.Root 
                     className="grid grid-cols-4 gap-2"
@@ -218,7 +218,7 @@ export function CreateAdModal(){
                     <label htmlFor="hourStart">Qual horário do dia?</label>
                     <div className="grid grid-cols-2 gap-1">
                       <input
-                        className="bg-zinc-900 py-3 px-4 rounded text-sm placeholder:text-zinc-500 removeClock"
+                        className="bg-zinc-900 py-3 px-4 rounded mob:text-sm placeholder:text-zinc-500 removeClock"
                         id="hourStart" 
                         type="time" 
                         placeholder="De"
@@ -226,7 +226,7 @@ export function CreateAdModal(){
                         {...register('hourStart')}
                       />
                       <input
-                        className="bg-zinc-900 py-3 px-4 rounded text-sm placeholder:text-zinc-500 removeClock"
+                        className="bg-zinc-900 py-3 px-4 rounded mob:text-sm placeholder:text-zinc-500 removeClock"
                         id="hourEnd" 
                         type="time" 
                         placeholder="Até"
@@ -244,7 +244,7 @@ export function CreateAdModal(){
                   {errors.hourEnd?.type && <InputError type={errors.hourEnd.type} field="hourEnd"/>}
                 </div>
   
-                <label className="mt-2 flex gap-2 text-sm items-center">
+                <label className="mt-2 flex gap-2 mob:text-sm items-center">
                   <Checkbox.Root 
                   checked={useVoiceChannel}
                   onCheckedChange={(checked) => {
@@ -263,7 +263,7 @@ export function CreateAdModal(){
                   Costumo me conectar ao chat de voz
                 </label>
   
-                <footer className="mt-4 flex justify-end gap-4">
+                <footer className="mt-4 flex flex-col mob:flex-row mob:justify-end gap-4">
                   <Dialog.Close 
                   type="button"
                   className="bg-zinc-500 hover:bg-zinc-600 px-5 h-12 rounded-md font-semibold"
@@ -273,7 +273,7 @@ export function CreateAdModal(){
                   </Dialog.Close >
                   <button 
                   type="submit"
-                  className="bg-violet-500  hover:bg-violet-600 px-5 h-12 rounded-md font-semibold flex items-center gap-3"
+                  className="bg-violet-500  hover:bg-violet-600 px-5 h-12 rounded-md font-semibold flex items-center justify-center gap-3"
                   >
                     <GameController className="w-6 h-6"/>
                     Encontrar duo</button>

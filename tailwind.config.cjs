@@ -16,6 +16,7 @@ module.exports = {
       }
     },
     screens: {
+      'mob': {'min': '480px'},
       'sm': {'min': '640px'},
       'md': {'min': '768px'},
       'lg': {'min': '1024px'},

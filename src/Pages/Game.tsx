@@ -32,22 +32,27 @@ export function Game(){
 
         <PageStructure>
             <Link to="/">
-                <ArrowCircleLeft size={70} className="text-white hover:text-purple-400 absolute left-10 top-10"/>
+                <ArrowCircleLeft size={70} className="text-white hover:text-purple-400 mob:absolute mob:left-10 mob:top-10"/>
             </Link>
             <Logo/>
-            <h1 className="text-4xl text-white font-black
-            sm:text-5xl"
-            >{games.filter(game => game.id === id).map(game => game.title)}</h1>
-            <div className="grid grid-cols-1 gap-6 mt-10 mx-10
-            sm:grid-cols-2
-            md:grid-cols-3 
-            xl:grid-cols-5">
-                {duo.map((ad) => (
-                    <DuoCard
-                    key={ad.id}
-                    data={ad}
-                    />
-                ))}
+            <div className="w-[100%] flex flex-col align-center items-center md:mt-8">
+                <h1 className="text-3xl text-white font-black
+                mob:text-4xl
+                sm:text-5xl"
+                >{games.filter(game => game.id === id).map(game => game.title)}</h1>
+                <div className={duo.length > 5?`grid grid-cols-1 gap-6 mt-10 mx-10
+                sm:grid-cols-2
+                md:grid-cols-3 
+                xl:grid-cols-5
+                place-items-center`: `flex justify-center mt-10 mx-10 gap-6`}
+                >
+                    {duo.map((ad) => (
+                        <DuoCard
+                        key={ad.id}
+                        data={ad}
+                        />
+                    ))}
+                </div>
             </div>
         </PageStructure>
     )
