@@ -263,7 +263,7 @@ export function CreateAdModal(){
                   Costumo me conectar ao chat de voz
                 </label>
   
-                <footer className="mt-4 flex flex-col mob:flex-row mob:justify-end gap-4">
+                <footer className="mt-4 flex flex-col mob:flex-row mob:justify-end gap-4 mb-8 mob:mb-4">
                   <Dialog.Close 
                   type="button"
                   className="bg-zinc-500 hover:bg-zinc-600 px-5 h-12 rounded-md font-semibold"

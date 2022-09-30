@@ -40,11 +40,11 @@ export function Game(){
                 mob:text-4xl
                 sm:text-5xl"
                 >{games.filter(game => game.id === id).map(game => game.title)}</h1>
-                <div className={duo.length > 5?`grid grid-cols-1 gap-6 mt-10 mx-10
+                <div className={duo.length >= 5?`grid grid-cols-1 gap-6 mt-10 mx-10
                 sm:grid-cols-2
                 md:grid-cols-3 
                 xl:grid-cols-5
-                place-items-center`: `flex justify-center mt-10 mx-10 gap-6`}
+                place-items-center`: `flex justify-center mt-10 mx-10 gap-6 flex-col mob:flex-row`}
                 >
                     {duo.map((ad) => (
                         <DuoCard
