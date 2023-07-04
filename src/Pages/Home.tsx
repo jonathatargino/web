@@ -17,7 +17,6 @@ export interface GameProps {
   }
 
 export function Home(){
-    console.log(`${import.meta.env.VITE_URL_BASE}/games`)
     const [games, setGames] = useState<GameProps[]>([])
   
     useEffect(() => {
